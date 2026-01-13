@@ -1,0 +1,29 @@
+<h1>{{title}}</h1>
+
+{{#if items.length}}
+  <div class="grid grid--cards">
+    {{#each items}}
+      <article class="card">
+        <figure class="card__media">
+          <a href="/content/{{slug}}">
+            <img src="{{imagePath}}" alt="{{title}}">
+          </a>
+        </figure>
+        <div class="card__body">
+          <h3 class="card__title">
+            <a href="/content/{{slug}}">{{title}}</a>
+          </h3>
+          <p class="card__meta">
+            {{category}} &bull; von {{ownerName}} &bull; {{formatDate createdAt}}
+          </p>
+          <form method="post" action="/content/{{slug}}/fav" style="margin-top: 0.5rem;">
+            <button type="submit" class="btn btn--sm btn--danger">Aus Favoriten entfernen</button>
+          </form>
+        </div>
+      </article>
+    {{/each}}
+  </div>
+{{else}}
+  <p>Du hast noch keine Favoriten.</p>
+  <p><a href="/content" class="btn btn--primary">Filme durchstöbern</a></p>
+{{/if}}

@@ -1,0 +1,89 @@
+<h1>{{title}}</h1>
+
+{{#if groups.length}}
+  {{#each groups}}
+    <section class="category-block">
+      <header class="category-block__header">
+        <h2 class="category-block__title">Neuste Filme in: {{category}}</h2>
+        <a class="category-block__more" href="/content?category={{encodeURIComponent category}}">
+          Alle anzeigen &rarr;
+        </a>
+      </header>
+      
+      {{#if items.length}}
+        <div class="grid grid--cards">
+          {{#each items}}
+            <article class="card">
+              <figure class="card__media">
+                <a href="/content/{{slug}}" aria-label="Details zu {{title}} öffnen">
+                  <img src="{{imagePath}}" alt="{{title}}">
+                </a>
+              </figure>
+              <div class="card__body">
+                <h3 class="card__title">
+                  <a href="/content/{{slug}}">{{title}}</a>
+                </h3>
+                <p class="card__meta">
+                  {{category}} &bull; von {{ownerName}}
+                </p>
+                <p class="card__likes">
+                  ❤ {{likeCount}} Like{{#if (gt likeCount 1)}}s{{/if}}
+                </p>
+                {{#if (canEdit this ../../currentUser)}}
+                  <div class="card__actions">
+                    <a class="btn btn--sm" href="/content/{{slug}}/edit">Bearbeiten</a>
+                    <form method="post" action="/content/{{slug}}/delete" style="display:inline;" onsubmit="return confirm('Eintrag löschen?');">
+                      <button type="submit" class="btn btn--sm btn--danger">Löschen</button>
+                    </form>
+                  </div>
+                {{/if}}
+              </div>
+            </article>
+          {{/each}}
+        </div>
+      {{else}}
+        <p>In <em>{{category}}</em> sind noch keine Filme vorhanden.</p>
+      {{/if}}
+    </section>
+  {{/each}}
+
+  {{#if topRated.length}}
+    <section class="top-rated">
+      <header class="category-block__header">
+        <h2 class="category-block__title">Bestbewertete Filme aller Zeiten</h2>
+        <a class="category-block__more" href="/content?sort=likes">Alle anzeigen &rarr;</a>
+      </header>
+      <div class="grid grid--cards">
+        {{#each topRated}}
+          <article class="card">
+            <figure class="card__media">
+              <a href="/content/{{slug}}" aria-label="Details zu {{title}} öffnen">
+                <img src="{{imagePath}}" alt="{{title}}">
+              </a>
+            </figure>
+            <div class="card__body">
+              <h3 class="card__title"><a href="/content/{{slug}}">{{title}}</a></h3>
+              <p class="card__meta">{{category}} &bull; von {{ownerName}}</p>
+              <p class="card__likes">❤ {{likeCount}} Like{{#if (gt likeCount 1)}}s{{/if}}</p>
+              {{#if (canEdit this ../currentUser)}}
+                <div class="card__actions">
+                  <a class="btn btn--sm" href="/content/{{slug}}/edit">Bearbeiten</a>
+                  <form method="post" action="/content/{{slug}}/delete" style="display:inline;" onsubmit="return confirm('Eintrag löschen?');">
+                    <button type="submit" class="btn btn--sm btn--danger">Löschen</button>
+                  </form>
+                </div>
+              {{/if}}
+            </div>
+          </article>
+        {{/each}}
+      </div>
+    </section>
+  {{/if}}
+{{else}}
+  <p>Noch keine Kategorien/Filme vorhanden.</p>
+  {{#if currentUser}}
+    <p><a href="/content/new" class="btn btn--primary">Ersten Film hinzufügen</a></p>
+  {{else}}
+    <p><a href="/register">Registriere dich</a>, um Filme hinzuzufügen!</p>
+  {{/if}}
+{{/if}}

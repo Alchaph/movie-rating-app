@@ -1,0 +1,36 @@
+<div class="page--new">
+  <h1>{{title}}</h1>
+
+  {{#if errors}}
+    <ul class="errors" role="alert" aria-live="polite">
+      {{#each errors}}<li>{{this}}</li>{{/each}}
+    </ul>
+  {{/if}}
+
+  <form method="post" action="/content" enctype="multipart/form-data" class="form" novalidate>
+    <label>Titel
+      <input type="text" name="title" value="{{values.title}}" required>
+      <small class="form__hint">Kurzer, prägnanter Titel für den Film.</small>
+    </label>
+    
+    <label>Beschrieb
+      <textarea name="description" rows="5" required>{{values.description}}</textarea>
+      <small class="form__hint">Empfehlung: 100–500 Zeichen.</small>
+    </label>
+    
+    <label>Kategorie
+      <select name="category" required>
+        <option value="" disabled {{#unless values.category}}selected{{/unless}}>Bitte wählen</option>
+        {{#each categories}}
+          <option value="{{this}}" {{#if (eq ../values.category this)}}selected{{/if}}>{{this}}</option>
+        {{/each}}
+      </select>
+    </label>
+    
+    <label>Bild (jpg, png, webp, gif; max. 5 MB)
+      <input type="file" name="image" accept="image/*" required>
+    </label>
+    
+    <button type="submit" class="btn btn--primary">Speichern</button>
+  </form>
+</div>

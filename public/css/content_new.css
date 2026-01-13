@@ -1,0 +1,80 @@
+/* ========================================
+   CONTENT NEW PAGE STYLES
+   ======================================== */
+
+.page--new {
+  max-width: 700px;
+  margin: 2rem auto;
+  padding: 0 1rem;
+}
+
+.page--new h1 {
+  font-size: clamp(1.6rem, 2vw, 2rem);
+  line-height: 1.2;
+  margin: 0 0 1.5rem;
+}
+
+.page--new .form {
+  max-width: 100%;
+}
+
+.page--new .form label {
+  display: grid;
+  gap: 0.4rem;
+  font-weight: 600;
+}
+
+.page--new .form input[type="text"],
+.page--new .form input[type="email"],
+.page--new .form select,
+.page--new .form textarea {
+  width: 100%;
+  border: 1px solid #d7dbe0;
+  background: #fff;
+  border-radius: 10px;
+  padding: 0.7rem 0.85rem;
+  font: inherit;
+  outline: none;
+  transition: border-color 0.15s, box-shadow 0.15s;
+  box-sizing: border-box;
+}
+
+.page--new .form textarea {
+  min-height: 140px;
+  line-height: 1.5;
+}
+
+.page--new .form input[type="file"] {
+  padding: 0.6rem;
+  background: #f8fafc;
+  border-style: dashed;
+}
+
+.page--new .form input:focus,
+.page--new .form select:focus,
+.page--new .form textarea:focus {
+  border-color: #7aa6ff;
+  box-shadow: 0 0 0 3px rgba(96, 140, 255, 0.2);
+}
+
+.page--new .form button[type="submit"] {
+  appearance: none;
+  border: none;
+  border-radius: 10px;
+  padding: 0.7rem 1rem;
+  font: inherit;
+  line-height: 1;
+  cursor: pointer;
+  background: #111827;
+  color: #fff;
+  transition: transform 0.05s, box-shadow 0.2s, opacity 0.2s;
+  box-shadow: 0 2px 8px rgba(17, 24, 39, 0.08);
+}
+
+.page--new .form button[type="submit"]:hover {
+  opacity: 0.95;
+}
+
+.page--new .form button[type="submit"]:active {
+  transform: translateY(1px);
+}

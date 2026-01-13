@@ -1,0 +1,49 @@
+<div class="page page--detail">
+  <h1>{{item.title}}</h1>
+  
+  <figure class="hero">
+    <img class="hero__img" src="{{item.imagePath}}" alt="{{item.title}}">
+    <figcaption class="hero__meta">
+      {{item.category}} &bull; von {{item.ownerName}} &bull; {{formatDate item.createdAt}}
+    </figcaption>
+  </figure>
+  
+  <p class="detail__likes">
+    ❤ {{likeCount}} Like{{#if (gt likeCount 1)}}s{{/if}}
+  </p>
+  
+  {{#if currentUser}}
+    <div class="detail__actions">
+      <form method="post" action="/content/{{item.slug}}/like" style="display:inline;">
+        <button type="submit" class="btn btn--sm">
+          {{#if isLiked}}💔 Unlike{{else}}❤️ Like{{/if}}
+        </button>
+      </form>
+      <form method="post" action="/content/{{item.slug}}/fav" style="display:inline;">
+        <button type="submit" class="btn btn--sm">
+          {{#if favorite}}★ In Favoriten{{else}}☆ Favorit{{/if}}
+        </button>
+      </form>
+      
+      {{#if (canEdit item currentUser)}}
+        <a class="btn btn--sm" href="/content/{{item.slug}}/edit">Bearbeiten</a>
+        <form method="post" action="/content/{{item.slug}}/delete" style="display:inline;" onsubmit="return confirm('Film wirklich löschen?');">
+          <button type="submit" class="btn btn--sm btn--danger">Löschen</button>
+        </form>
+      {{/if}}
+    </div>
+  {{else}}
+    <p>
+      <a href="/login?next=/content/{{item.slug}}">
+        Einloggen, um zu liken oder zu favorisieren.
+      </a>
+    </p>
+  {{/if}}
+  
+  <div class="detail__desc">
+    <h2>Beschreibung</h2>
+    <p>{{item.description}}</p>
+  </div>
+  
+  <p class="detail__back"><a href="/content">&larr; Zur Übersicht</a></p>
+</div>

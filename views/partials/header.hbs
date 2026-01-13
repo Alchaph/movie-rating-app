@@ -1,0 +1,26 @@
+<header class="site-header">
+  <nav class="nav">
+    <a class="brand" href="/">MovieRating</a>
+    <div class="nav-links">
+      <a href="/">Home</a>
+      <a href="/content">Filme</a>
+      {{#if currentUser}}
+        <a href="/content/new">Neuer Film</a>
+        <a href="/me/favorites">Favoriten</a>
+        <a href="/users">Users</a>
+      {{/if}}
+      <a href="/about">About</a>
+    </div>
+    <div class="nav-auth">
+      {{#if currentUser}}
+        <span class="nav-user">Hallo, {{currentUser.name}}</span>
+        <form method="post" action="/logout" class="nav-logout">
+          <button type="submit" class="btn btn--sm">Logout</button>
+        </form>
+      {{else}}
+        <a href="/login" class="btn btn--sm">Login</a>
+        <a href="/register" class="btn btn--sm btn--primary">Registrieren</a>
+      {{/if}}
+    </div>
+  </nav>
+</header>

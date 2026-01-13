@@ -2,6 +2,22 @@
 
 Eine vollständige Film-Bewertungs-Anwendung mit Server-Side Rendering (SSR) unter Verwendung von Express.js und Handlebars.
 
+## Quick Start
+
+```bash
+# 1. Repository klonen
+git clone https://github.com/Alchaph/movie-rating-app.git
+cd movie-rating-app
+
+# 2. Abhängigkeiten installieren
+npm install
+
+# 3. Anwendung starten
+npm start
+```
+
+Die Anwendung ist dann unter **http://localhost:3000** erreichbar.
+
 ## Features
 
 - **Benutzer-Authentifizierung**: Registrierung, Login, Logout mit Passwort-Hashing (bcrypt)
@@ -16,42 +32,53 @@ Eine vollständige Film-Bewertungs-Anwendung mit Server-Side Rendering (SSR) unt
 - Node.js 18+ 
 - npm
 
-## Installation
+## Installation (Schritt für Schritt)
+
+### 1. Repository klonen
 
 ```bash
-# Repository klonen oder Verzeichnis erstellen
+git clone https://github.com/Alchaph/movie-rating-app.git
 cd movie-rating-app
+```
 
-# Abhängigkeiten installieren
+### 2. Abhängigkeiten installieren
+
+```bash
 npm install
 ```
 
-## Konfiguration
+### 3. Umgebungsvariablen konfigurieren (optional)
 
-Die `.env` Datei enthält folgende Optionen:
+Erstelle eine `.env` Datei im Projektverzeichnis:
 
 ```env
 # Session-Secret (in Produktion ändern!)
 SESSION_SECRET=dev-secret-change-me-in-production
 
-# Datenbank-Dateipfad (optional)
+# Datenbank-Dateipfad (optional, Standard: ./data/app.db)
 DB_FILE=./data/app.db
 
-# Server-Port (optional)
+# Server-Port (optional, Standard: 3000)
 PORT=3000
 ```
 
-## Starten
+> **Hinweis:** Die `.env` Datei ist optional. Die Anwendung funktioniert auch ohne sie mit Standardwerten.
+
+### 4. Anwendung starten
 
 ```bash
 # Produktionsmodus
 npm start
 
-# Entwicklungsmodus (mit Auto-Reload)
+# Entwicklungsmodus (mit Auto-Reload bei Dateiänderungen)
 npm run dev
 ```
 
-Die Anwendung ist dann unter `http://localhost:3000` erreichbar.
+### 5. Im Browser öffnen
+
+Öffne http://localhost:3000 in deinem Browser.
+
+Die Datenbank (`data/app.db`) und der Upload-Ordner (`public/uploads/`) werden automatisch erstellt.
 
 ## Projektstruktur
 

@@ -1,0 +1,23 @@
+{
+  "name": "movie-rating-app",
+  "version": "1.0.0",
+  "type": "module",
+  "main": "app.js",
+  "scripts": {
+    "start": "node app.js",
+    "dev": "node --watch app.js"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "description": "A movie rating application with SSR using Handlebars",
+  "dependencies": {
+    "bcrypt": "^6.0.0",
+    "better-sqlite3": "^12.6.0",
+    "dotenv": "^17.2.3",
+    "express": "^5.2.1",
+    "express-handlebars": "^8.0.1",
+    "express-session": "^1.18.2",
+    "multer": "^2.0.2"
+  }
+}
